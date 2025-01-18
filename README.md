@@ -54,7 +54,7 @@ $ unzip data.zip
 
 ### CodeBert
 
-[Here](https://huggingface.co/microsoft/codebert-base) is the official CodeBert. For the convenience of reproduction, we have downloaded and placed it in the `DLVD_LineVul/bert/` directory.
+[Here](https://huggingface.co/microsoft/codebert-base) is the official CodeBert. To facilitate reproduction, we recommend that you download the `pytorch_model.bin` file and place it in the `DLVD_LineVul/bert/ directory`.
 
 ## DLVD_ReVeal
 
