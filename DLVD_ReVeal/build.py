@@ -3,15 +3,15 @@ import warnings
 
 warnings.filterwarnings("ignore")
 parser = argparse.ArgumentParser()
-parser.add_argument("--label_rate", required=True, help="Choose the proportion of labels. ")  # Default is 1.0.
-parser.add_argument("--dataset", required=True, help="Select dataset")  # Select [reveal,bigvul,Devign,Juliet]
-parser.add_argument("--stopper_mode", required=True, help="Select model stop type")  # Default is f1.
-parser.add_argument("--base_model", required=True, help="base model")  # Default is ReVeal.
-parser.add_argument("--sampling", required=True, help="Sampling method")  # [None,RUS,ROS]
+parser.add_argument("--label_rate", required=True, help="Choose the proportion of labels. ")  
+parser.add_argument("--dataset", required=True, help="Select dataset")  
+parser.add_argument("--stopper_mode", required=True, help="Select model stop type")  
+parser.add_argument("--base_model", required=True, help="base model")  
+parser.add_argument("--sampling", required=True, help="Sampling method")  
 parser.add_argument("--loss_fct", required=True,
-                    help="Loss function type")  # Select [celoss,LAloss,LDAMloss,focalloss,CBceLoss,CBfocalloss]
+                    help="Loss function type")  
 parser.add_argument("--comment", required=True,
-                    help="model describe")  # {loss_fct}_{samling}.eg.celoss_RUS represents celoss+RUS
+                    help="model describe")  
 
 args = vars(parser.parse_args())
 if args['base_model'] == 'ReVeal':

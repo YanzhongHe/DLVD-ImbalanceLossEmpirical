@@ -42,7 +42,11 @@ $ pip install imbalanced-ensemble
 
 ### Text Dataset
 
-We utilize the cleaned versions of **Devign**, **Big-Vul**, and **Juliet** provided by Roland et al. [Here](https://figshare.com/articles/software/Reproduction_Package_for_Data_Quality_for_Software_Vulnerability_Datasets_/20499924) is the cleaned version data link. We also used the original **ReVeal** dataset as it does not have a clean version. To adapt to the **LineVul** basic detection models, we processed the four datasets into **text datasets**. You can get the original data set by running the code below:
+We utilize the cleaned versions of **Devign**, **Big-Vul**, and **Juliet** provided by Roland et al. [Here](https://figshare.com/articles/software/Reproduction_Package_for_Data_Quality_for_Software_Vulnerability_Datasets_/20499924) is the cleaned version data link. We also used the original **ReVeal** dataset as it does not have a clean version. To adapt to the **LineVul** basic detection models, we processed the four datasets into **text datasets**.
+
+Please click [this link](https://figshare.com/s/5483f706b04cb9a66fa3) to download the `DLVD_LineVul/data.zip` data and place it in the `DLVD_LineVul/` path. Use the `unzip data.zip` command to get the VD_data folder.
+
+You can get the original data set by running the code below:
 
 ```
 
@@ -62,7 +66,11 @@ $ unzip data.zip
 
 We utilize the cleaned versions of **Devign**, **Big-Vul**, and **Juliet** provided by Roland et al. [Here](https://figshare.com/articles/software/Reproduction_Package_for_Data_Quality_for_Software_Vulnerability_Datasets_/20499924) is the cleaned version data link. We also used the original **ReVeal** dataset as it does not have a clean version. To adapt to the **ReVeal** basic detection models, we processed the four datasets into **graph datasets**.
 
-For graph datasets,  Many works utilize Joern to extract graphs from source code. However, due to the difficulty in configuring the Joern environment, we provide the preprocessed graph dataset using Joern in `DLVD_ReVeal/ReVeal/VD_data/`. You can use the following method to get the original dataset. For example, the reveal dataset is demonstrated as follows:
+For graph datasets,  Many works utilize Joern to extract graphs from source code. However, due to the difficulty in configuring the Joern environment, we provide the preprocessed graph dataset using Joern in `DLVD_ReVeal/ReVeal/VD_data/`.
+
+Please click [this link](https://figshare.com/s/5483f706b04cb9a66fa3) to download the `DLVD_ReVeal/ReVeal/VD_data.zip` data and place it in the `DLVD_ReVeal/ReVeal/` path. Use the `unzip VD_data.zip` command to get the VD_data folder.
+
+You can use the following method to get the original dataset. For example, the reveal dataset is demonstrated as follows:
 
 ```
 
