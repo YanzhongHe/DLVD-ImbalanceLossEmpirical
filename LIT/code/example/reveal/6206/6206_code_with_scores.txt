@@ -1,0 +1,34 @@
+ 1 0.246855 static int com_connect ( String * buffer , char * line ) {
+ 2 0.339551  char * tmp , buff [ 256 ] ;
+ 3 0.015939  my_bool save_rehash = opt_rehash ;
+ 4 0.002487  int error ;
+ 5 0.036139  bzero ( buff , sizeof ( buff ) ) ;
+ 6 0.014313  if ( buffer ) {
+ 7 0.058071  tmp = strmake ( buff , line , sizeof ( buff ) - 2 ) ;
+ 8 0.017809  # ifdef EXTRA_DEBUG tmp [ 1 ] = 0 ;
+ 9 0.011232  # endif tmp = get_arg ( buff , 0 ) ;
+10 0.007812  if ( tmp && * tmp ) {
+11 0.004527  my_free ( current_db ) ;
+12 0.004491  current_db = my_strdup ( tmp , MYF ( MY_WME ) ) ;
+13 0.004395  tmp = get_arg ( buff , 1 ) ;
+14 0.000593  if ( tmp ) {
+15 0.002204  my_free ( current_host ) ;
+16 0.002999  current_host = my_strdup ( tmp , MYF ( MY_WME ) ) ;
+17 0.000131  }
+18 0.000154  }
+19 0.000558  else {
+20 0.002170  opt_rehash = 0 ;
+21 0.001163  }
+22 0.070822  buffer -> length ( 0 ) ;
+23 0.000373  }
+24 0.001250  else opt_rehash = 0 ;
+25 0.008794  error = sql_connect ( current_host , current_db , current_user , opt_password , 0 ) ;
+26 0.001235  opt_rehash = save_rehash ;
+27 0.001605  if ( connected ) {
+28 0.013421  sprintf ( buff , "Connection id: %lu" , mysql_thread_id ( & mysql ) ) ;
+29 0.002628  put_info ( buff , INFO_INFO ) ;
+30 0.006199  sprintf ( buff , "Current database: %.128s\n" , current_db ? current_db : "*** NONE ***" ) ;
+31 0.002183  put_info ( buff , INFO_INFO ) ;
+32 0.000398  }
+33 0.000874  return error ;
+34 0.001933  }

@@ -1,0 +1,20 @@
+ 1 0.045581 long long Chapters::Atom::GetTime(
+ 2 0.040813     const Chapters* pChapters,
+ 3 0.032223     long long timecode)
+ 4 0.004913 {
+ 5 0.044016     if (pChapters == NULL)
+ 6 0.043817         return -1;
+ 7 0.083786     Segment* const pSegment = pChapters->m_pSegment;
+ 8 0.055819     if (pSegment == NULL)  // weird
+ 9 0.043803         return -1;
+10 0.075769     const SegmentInfo* const pInfo = pSegment->GetInfo();
+11 0.039825     if (pInfo == NULL)
+12 0.043804         return -1;
+13 0.076086     const long long timecode_scale = pInfo->GetTimeCodeScale();
+14 0.059811     if (timecode_scale < 1)  // weird
+15 0.043827         return -1;
+16 0.039851     if (timecode < 0)
+17 0.043809         return -1;
+18 0.064348     const long long result = timecode_scale * timecode;
+19 0.023934     return result;
+20 0.004009 }

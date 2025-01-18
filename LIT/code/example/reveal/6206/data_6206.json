@@ -1,0 +1,8 @@
+{
+    "processed_func": {
+        "6206": "static int com_connect ( String * buffer , char * line ) {\n char * tmp , buff [ 256 ] ;\n my_bool save_rehash = opt_rehash ;\n int error ;\n bzero ( buff , sizeof ( buff ) ) ;\n if ( buffer ) {\n tmp = strmake ( buff , line , sizeof ( buff ) - 2 ) ;\n # ifdef EXTRA_DEBUG tmp [ 1 ] = 0 ;\n # endif tmp = get_arg ( buff , 0 ) ;\n if ( tmp && * tmp ) {\n my_free ( current_db ) ;\n current_db = my_strdup ( tmp , MYF ( MY_WME ) ) ;\n tmp = get_arg ( buff , 1 ) ;\n if ( tmp ) {\n my_free ( current_host ) ;\n current_host = my_strdup ( tmp , MYF ( MY_WME ) ) ;\n }\n }\n else {\n opt_rehash = 0 ;\n }\n buffer -> length ( 0 ) ;\n }\n else opt_rehash = 0 ;\n error = sql_connect ( current_host , current_db , current_user , opt_password , 0 ) ;\n opt_rehash = save_rehash ;\n if ( connected ) {\n sprintf ( buff , \"Connection id: %lu\" , mysql_thread_id ( & mysql ) ) ;\n put_info ( buff , INFO_INFO ) ;\n sprintf ( buff , \"Current database: %.128s\\n\" , current_db ? current_db : \"*** NONE ***\" ) ;\n put_info ( buff , INFO_INFO ) ;\n }\n return error ;\n }"
+    },
+    "target": {
+        "6206": 1
+    }
+}

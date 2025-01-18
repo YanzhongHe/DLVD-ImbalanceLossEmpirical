@@ -1,0 +1,8 @@
+{
+    "processed_func": {
+        "8040": "long long Chapters::Atom::GetTime(\n    const Chapters* pChapters,\n    long long timecode)\n{\n    if (pChapters == NULL)\n        return -1;\n    Segment* const pSegment = pChapters->m_pSegment;\n    if (pSegment == NULL)  // weird\n        return -1;\n    const SegmentInfo* const pInfo = pSegment->GetInfo();\n    if (pInfo == NULL)\n        return -1;\n    const long long timecode_scale = pInfo->GetTimeCodeScale();\n    if (timecode_scale < 1)  // weird\n        return -1;\n    if (timecode < 0)\n        return -1;\n    const long long result = timecode_scale * timecode;\n    return result;\n}\n"
+    },
+    "target": {
+        "8040": 1
+    }
+}

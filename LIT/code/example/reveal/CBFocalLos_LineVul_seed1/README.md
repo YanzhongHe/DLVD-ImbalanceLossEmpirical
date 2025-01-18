@@ -1,0 +1,1 @@
+Please use the CBFocalLoss loss function to train the model of the **seed1** dataset under reveal, place this model in the folder, and name it "linevul_cbfocalloss"

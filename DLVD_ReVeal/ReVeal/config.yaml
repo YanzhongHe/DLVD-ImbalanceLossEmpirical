@@ -1,0 +1,40 @@
+comment: VD(ReVeal)
+data:
+  ckpt_path: ReVeal/teachers
+  label_rate: '1.0'
+  max_seq_len: 512
+  ssl_data_path: ReVeal/VD_data/big-vul # change datasets
+  teacher_path: ''
+loss:
+  PHuber_tau: 10
+  balanced_beta: 0.999
+  coef_student: 0.5
+  coef_teacher: 0.0
+  comment: celoss_None
+  contrastive_type: triplet
+  focal_alpha: 0.15
+  loss_type: celoss
+  uncertainty: false
+sampling:
+  eval_pool_size: 8000
+  mc_dropout_iters: 30
+  sampling_rate: 0.15
+  sampling_scheme: IG_class
+train:
+  batch_size: 128 # bigvul-48 others-128
+  bert_lr: 0.0001
+  emb_dim: 768
+  epoch_stop_patience: 100
+  eval_batch_size: 250
+  finetune_lr: 0.0001
+  hidden_channels: 200
+  input_channels: 120
+  lstm_emb_lr: 0.0001
+  num_layers: 8
+  patience_delta: 0.005
+  random_seed: 2023
+  self_train_max_epoch: 10
+  self_train_patience: 20
+  stopper_mode: f1
+  transformers_model_name: codebert
+  weight_decay: 1.0e-08
