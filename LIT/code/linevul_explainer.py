@@ -417,7 +417,7 @@ class Args:
         self.output_dir=output_dir
         self.num_attention_heads = 12
         self.device = torch.device('cpu')
-        self.model_name_or_path = '/home/algernon/code/DLVD/DLVD_LineVul/bert'
+        self.model_name_or_path = '../../DLVD_LineVul/bert'
         self.epoch = 5
         self.train_batch_size = 16
         self.adam_epsilon = 1e-8
@@ -431,9 +431,9 @@ class Args:
         self.n_gpu = 1
         self.evaluate_during_training = True
         # self.output_dir = './saved_models'
-        self.train_data_file = '../data/big-vul_dataset/train.csv'
-        self.eval_data_file = '../data/big-vul_dataset/valid.csv'
-        self.test_data_file = '../data/big-vul_dataset/test.csv'
+        self.train_data_file = '../data/big-vul/train.csv'
+        self.eval_data_file = '../data/big-vul/valid.csv'
+        self.test_data_file = '../data/big-vul/test.csv'
 
 # arg = Args()
 # model = LineVulModelExplainer(args=arg)
