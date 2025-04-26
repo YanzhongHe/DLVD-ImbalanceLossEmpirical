@@ -40,6 +40,8 @@ $ pip install imbalanced-ensemble
 
 ## DLVD_LineVul
 
+All datasets can be downloaded through the following links: https://figshare.com/s/5483f706b04cb9a66fa3
+
 ### Text Dataset
 
 We utilize the cleaned versions of **Devign**, **Big-Vul**, and **Juliet** provided by Roland et al. [Here](https://figshare.com/articles/software/Reproduction_Package_for_Data_Quality_for_Software_Vulnerability_Datasets_/20499924) is the cleaned version data link. We also used the original **ReVeal** dataset as it does not have a clean version. To adapt to the **LineVul** basic detection models, we processed the four datasets into **text datasets**.
@@ -61,6 +63,8 @@ $ unzip data.zip
 [Here](https://huggingface.co/microsoft/codebert-base) is the official CodeBert. To facilitate reproduction, we recommend that you download the `pytorch_model.bin` file and place it in the `DLVD_LineVul/bert/` directory.
 
 ## DLVD_ReVeal
+
+All datasets can be downloaded through the following links: https://figshare.com/s/5483f706b04cb9a66fa3
 
 ### Graph Dataset
 

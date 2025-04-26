@@ -1,34 +1,25 @@
 import torch
 
 def one_hot_encode(labels, num_classes):
-    # 将标签转换为独热编码
     return torch.eye(num_classes)[labels].to(labels.device)
 
+def DSC_loss(logits, labels, gamma=1.0, smooth=1, num_classes=2):
+    probs = torch.sigmoid(logits)  # Convert logits to probabilities
+    labels = one_hot_encode(labels, num_classes=num_classes)  # One-hot encode ground truth
 
-
-def DSC_loss(logits, labels, smooth=0.5, num_classes=2):
-    # 将logits转换为概率
-    probs = torch.sigmoid(logits)  # 对于二分类问题
-    
-    # 转换标签为独热编码
-    labels = one_hot_encode(labels, num_classes=num_classes)
-    
-    # 确保形状一致
     if probs.shape != labels.shape:
         raise ValueError(f"Shape mismatch: probs shape {probs.shape} and labels shape {labels.shape} should be the same")
-    
-    # 计算1减去预测值
-    probs_rev = 1.0 - probs
-    
-    # 计算交集和平方和
-    nominator = 2.0 * torch.sum(probs * labels, dim=1) + smooth
-    denominator = torch.sum(probs * probs, dim=1) + torch.sum(labels * labels, dim=1) + smooth
-    
-    # 计算Dice系数
-    dice = nominator / denominator
-    
-    # 计算DSC损失
-    loss = 1 - dice
-    
-    # 返回损失的均值
+
+    one_minus_probs = 1.0 - probs
+    weight = one_minus_probs ** gamma
+
+    numerator = weight * probs * labels
+
+    l = weight * probs
+    r = labels
+
+    numerator_sum = 2.0 *torch.sum(numerator, dim=1) + smooth
+    denominator_sum = torch.sum(l, dim=1) + torch.sum(r, dim=1) + smooth
+
+    loss = 1 - numerator_sum / denominator_sum
     return torch.mean(loss)
