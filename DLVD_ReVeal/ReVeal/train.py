@@ -19,7 +19,6 @@ from sklearn.metrics import precision_score, f1_score, recall_score, matthews_co
 from .bigvul_dataset import BigVulGraphDataset
 
 from unbalanced_loss.LDAMLoss import LDAMLoss
-from unbalanced_loss.focal_loss import BinaryFocalLoss
 from unbalanced_loss.weight_ce_loss import WBCEWithLogitLoss
 from unbalanced_loss.LALoss import LALoss
 from unbalanced_loss.class_balanced_loss import Loss

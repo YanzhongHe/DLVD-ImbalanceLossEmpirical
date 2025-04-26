@@ -22,7 +22,6 @@ from linevul.linevul_model import Model
 from logger import TrainingLogger
 
 from unbalanced_loss.LDAMLoss import LDAMLoss
-from unbalanced_loss.focal_loss import BinaryFocalLoss
 from unbalanced_loss.weight_ce_loss import WBCEWithLogitLoss
 from unbalanced_loss.LALoss import LALoss
 from unbalanced_loss.class_balanced_loss import Loss
